@@ -1,0 +1,14 @@
+/target/
+target/
+**/*.log
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.project
+*.classpath
+*.settings
+.idea/
+.eclipse
+.vscode

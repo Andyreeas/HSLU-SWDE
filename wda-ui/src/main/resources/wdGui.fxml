@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="939.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hslu.swde.wda.application.controller.MainController">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu fx:id="editUser" mnemonicParsing="false" onAction="#openEditUser" text="Benutzerverwaltung">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="Mitglieder bearbeiten" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox>
+               <children>
+                  <Label layoutX="18.0" layoutY="15.0" text="Funktionen:">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Wetterdaten">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin></Label>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="last24h" mnemonicParsing="false" onAction="#bttLast24hClicked" text="Daten der letzten 24h" />
+            <Label text="Von Datum:">
+               <VBox.margin>
+                  <Insets bottom="-8.0" />
+               </VBox.margin>
+            </Label>
+            <DatePicker fx:id="dpDateFrom" onAction="#dpDateFromSelected" prefHeight="25.0" prefWidth="148.0" />
+            <Label layoutX="10.0" layoutY="54.0" text="Bis Datum:">
+               <VBox.margin>
+                  <Insets bottom="-8.0" />
+               </VBox.margin>
+            </Label>
+            <DatePicker fx:id="dpDateTo" layoutX="10.0" layoutY="54.0" onAction="#dpDateToSelected" prefHeight="25.0" prefWidth="148.0" />
+            <Button fx:id="showWeatherData" layoutX="10.0" layoutY="18.0" mnemonicParsing="false" onAction="#bttgetWeatherDataClicked" text="Wetterdaten anzeigen" />
+            <Button fx:id="averageTemp" mnemonicParsing="false" onAction="#bttAverageTempClicked" text="Durchschn. Temperatur" />
+            <Button fx:id="minMaxTemp" mnemonicParsing="false" onAction="#bttMinMaxTempClicked" text="Min/Max Temperatur" />
+            <Button fx:id="averagePressure" mnemonicParsing="false" onAction="#bttAveragePressureClicked" text="Durchschn. Luftdruck" />
+            <Button fx:id="minMaxPressure" layoutX="10.0" layoutY="235.0" mnemonicParsing="false" onAction="#bttMinMaxPressureClicked" text="Min/Max Luftdruck" />
+            <Button fx:id="averageHumidity" mnemonicParsing="false" onAction="#bttAverageHumidityClicked" text="Durchschn. Luftfeuchtig." />
+            <Button fx:id="minMaxHumidity" mnemonicParsing="false" onAction="#bttMinMaxHumidity" text="Min/Max Luftfeuchtigkeit" />
+            <Button fx:id="tempCourse" mnemonicParsing="false" onAction="#bttTempCourseClicked" text="Temperaturverlauf" />
+            <Button fx:id="pressureCourse" mnemonicParsing="false" onAction="#bttPressureCourseClicked" text="Luftdrucksverl." />
+            <Button fx:id="humidityCourse" mnemonicParsing="false" onAction="#bttHumidityCourseClicked" text="Luftfeuchtigkeitsverl." />
+            <Button fx:id="exportToCSV" mnemonicParsing="false" onAction="#bttExportToCSVClicked" text="Export">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin></Button>
+            <Button fx:id="clearText" mnemonicParsing="false" onAction="#clearText" text="Clear Text" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="8.0" right="8.0" top="8.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" top="8.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="400.0" prefWidth="781.0">
+               <children>
+                  <ListView fx:id="listViewLeft" prefHeight="245.0" prefWidth="395.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="bttMoveRightAll" minWidth="49.0" mnemonicParsing="false" onAction="#sendAllRight" text="&gt;&gt;&gt;">
+                           <VBox.margin>
+                              <Insets top="46.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="bttMoveRightOne" minWidth="49.0" mnemonicParsing="false" onAction="#sendOneRight" text="&gt;">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="bttMoveLeftOne" minWidth="49.0" mnemonicParsing="false" onAction="#sendOneLeft" text="&lt;">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="bttMoveLeftAll" minWidth="49.0" mnemonicParsing="false" onAction="#sendAllLeft" text="&lt;&lt;&lt;">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <ListView fx:id="listViewRight" prefHeight="245.0" prefWidth="397.0" />
+               </children>
+            </HBox>
+            <TextArea fx:id="textOutput" editable="false" prefHeight="518.0" prefWidth="781.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></TextArea>
+         </children>
+         <BorderPane.margin>
+            <Insets right="8.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>
